@@ -1,11 +1,17 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import { BrowserRouter, Routes, Route, createBrowserRouter, RouterProvider } from "react-router-dom";
-import Classes from './Classes';
-import Home from './Home';
+import React from "react";
+import logo from "./logo.svg";
+import "./App.css";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom";
+import Classes from "./Classes";
+import Home from "./Home";
+import ClassesDetail from "./ClassesDetail";
 function App() {
-
   const router = createBrowserRouter([
     {
       path: "/",
@@ -15,21 +21,16 @@ function App() {
       path: "classes",
       element: <Classes />,
     },
+    {
+      path: "classes-detail/:classId",
+      element: <ClassesDetail />,
+    },
   ]);
-  
-  return (
-    
-    // <BrowserRouter>
-    //   <Routes>
-    //     <Route path="/" element={<Home />}>
-    //       <Route path="/classes" element={<Classes />} />
-    //     </Route>
-    //   </Routes>
-    // </BrowserRouter>
 
-  <React.StrictMode>
-    <RouterProvider router={router} />
-  </React.StrictMode>
+  return (
+    <React.StrictMode>
+      <RouterProvider router={router} />
+    </React.StrictMode>
   );
 }
 
