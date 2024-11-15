@@ -1,16 +1,10 @@
 import React from "react";
-import logo from "./logo.svg";
 import "./App.css";
-import {
-  BrowserRouter,
-  Routes,
-  Route,
-  createBrowserRouter,
-  RouterProvider,
-} from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Classes from "./Classes";
 import Home from "./Home";
 import ClassesDetail from "./ClassesDetail";
+import Monsters from "./Monsters";
 function App() {
   const router = createBrowserRouter([
     {
@@ -24,6 +18,10 @@ function App() {
     {
       path: "classes-detail/:classId",
       element: <ClassesDetail />,
+    },
+    {
+      path: "monsters",
+      element: <Monsters />,
     },
   ]);
 

@@ -9,7 +9,7 @@ function Home() {
       <div className={styles.nav}>
         <Link to="/classes">Classes</Link>
         <Link to="/">Characters</Link>
-        <Link to="/">Monster compendium</Link>
+        <Link to="/monsters">Monster compendium</Link>
       </div>
     </div>
   );
