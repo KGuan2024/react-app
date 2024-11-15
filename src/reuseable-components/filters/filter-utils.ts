@@ -1,3 +1,4 @@
+import { WritableDraft } from "immer";
 import { Filter, SelectedState } from "./FilterTree";
 
 export function navToNode(indexPath: number[], data: Filter[]) {
@@ -12,7 +13,7 @@ export function navToNode(indexPath: number[], data: Filter[]) {
 }
 
 export function updateSelectedFilters(
-  filters: Filter[],
+  filters: Filter[] | WritableDraft<Filter>[],
   index: number,
   parentIndexPath: number[] = []
 ) {
@@ -27,6 +28,17 @@ export function updateSelectedFilters(
   }
 
   updateParents(parentIndexPath, filters);
+}
+
+export function updateExpandedFilters(
+  filters: Filter[] | WritableDraft<Filter>[],
+  index: number,
+  parentIndexPath: number[] = []
+) {
+  const nodeToToggle = navToNode(parentIndexPath.concat(index), filters);
+  if (nodeToToggle) {
+    nodeToToggle.expanded = !nodeToToggle.expanded;
+  }
 }
 
 export function getToggledSelectedState(node: Filter) {
