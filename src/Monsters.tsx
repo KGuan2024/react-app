@@ -1,11 +1,8 @@
-import { FormGroup } from "@mui/material";
 import { useImmer } from "use-immer";
 import {
-  hasChildren,
   navToNode,
   updateSelectedFilters,
 } from "./reuseable-components/filters/filter-utils";
-import FolderChipset from "./reuseable-components/chipsets/FolderChipset";
 import FilterTree, { Filter } from "./reuseable-components/filters/FilterTree";
 
 function Monsters() {
@@ -133,55 +130,6 @@ function Monsters() {
     updateFilters((draft) => {
       updateSelectedFilters(draft, index, indexPath);
     });
-  }
-
-  function RenderFiltersList(
-    filters: Filter[],
-    parentIndexPath: number[] = []
-  ) {
-    const mappedFilters = filters?.map((filter: Filter, index: number) => (
-      <div
-        style={{ display: "flex", flexDirection: "column" }}
-        key={filter.key}
-      >
-        <div
-          style={{ display: "inline-flex", alignItems: "center", gap: "4px" }}
-        >
-          {parentIndexPath.length > 0 && (
-            <div
-              style={{ width: "8px", height: "1px", background: "grey" }}
-            ></div>
-          )}
-
-          {FolderChipset({
-            label: filter.key,
-            state: filter.selectedState,
-            expandable: hasChildren(filter),
-            expanded: filter.expanded,
-            checkboxHandler: () => {
-              changeFilterSelection(index, parentIndexPath);
-            },
-            toggleHandler: () => {
-              toggleFilterDisplay(index, parentIndexPath);
-            },
-          })}
-        </div>
-        {filter.expanded && (
-          <div
-            style={{
-              marginLeft: "8px",
-              borderLeft: "1px solid grey",
-            }}
-          >
-            {RenderFiltersList(
-              filter.children || [],
-              parentIndexPath.concat(index)
-            )}
-          </div>
-        )}
-      </div>
-    ));
-    return mappedFilters;
   }
 
   return (
