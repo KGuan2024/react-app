@@ -5,105 +5,124 @@ import {
   updateExpandedFilters,
   updateSelectedFilters,
 } from "../../reuseable-components/filters/filter-utils";
+import { Size } from "../../mock-data-services/monsters.mock";
 
 const monstersMockFilters: Filter[] = [
   {
-    key: "Beast",
-    type: "MonsterCategory",
+    key: "Monster Type",
+    type: "MonsterType",
     children: [
       {
-        key: "Mammal",
-        type: "MonsterSubcategory",
+        key: "Beast",
+        type: "MonsterCategory",
         children: [
           {
-            key: "Dire Wolf",
-            type: "Monster",
+            key: "Mammal",
+            type: "MonsterSubcategory",
+            children: [
+              {
+                key: "Wolves",
+                type: "Monster",
+              },
+            ],
+          },
+          {
+            key: "Avian",
+            type: "MonsterSubcategory",
+            // children: [
+            //   {
+            //     key: "Roc",
+            //     type: "Monster",
+            //   },
+            //   {
+            //     key: "Kenku",
+            //     type: "Monster",
+            //   },
+            // ],
           },
         ],
       },
       {
-        key: "Avian",
-        type: "MonsterSubcategory",
+        key: "Elemental",
+        type: "MonsterCategory",
         children: [
           {
-            key: "Roc",
-            type: "Monster",
+            key: "Air",
+            type: "MonsterSubcategory",
           },
           {
-            key: "Kenku",
-            type: "Monster",
+            key: "Fire",
+            type: "MonsterSubcategory",
+          },
+          {
+            key: "Water",
+            type: "MonsterSubcategory",
+          },
+          {
+            key: "Earth",
+            type: "MonsterSubcategory",
+          },
+        ],
+      },
+      {
+        key: "Fey",
+        type: "MonsterCategory",
+        children: [
+          {
+            key: "Humanoid",
+            type: "MonsterSubcategory",
+            children: [
+              {
+                key: "Hags",
+                type: "MonsterType",
+              },
+              {
+                key: "Satyr",
+                type: "Monster",
+              },
+              {
+                key: "Dryad",
+                type: "MonsterType",
+              },
+            ],
+          },
+          {
+            key: "Animal",
+            type: "MonsterSubcategory",
+            // children: [
+            //   {
+            //     key: "Dandylion",
+            //     type: "Monster",
+            //   },
+            //   {
+            //     key: "Goose Mother",
+            //     type: "Monster",
+            //   },
+            // ],
           },
         ],
       },
     ],
   },
   {
-    key: "Elemental",
-    type: "MonsterCategory",
+    key: "Size",
+    type: "SizeCategory",
     children: [
       {
-        key: "Air Elemental",
-        type: "Monster",
+        key: Size.small,
+        type: "Size",
       },
       {
-        key: "Fire Elemental",
-        type: "Monster",
+        key: Size.medium,
+        type: "Size",
       },
       {
-        key: "Water Elemental",
-        type: "Monster",
+        key: Size.large,
+        type: "Size",
       },
       {
-        key: "Earth Elemental",
-        type: "Monster",
-      },
-    ],
-  },
-  {
-    key: "Fey",
-    type: "MonsterCategory",
-    children: [
-      {
-        key: "Humanoid",
-        type: "MonsterSubcategory",
-        children: [
-          {
-            key: "Hag",
-            type: "Monster",
-          },
-          {
-            key: "Satyr",
-            type: "Monster",
-          },
-          {
-            key: "Dryad",
-            type: "Monster",
-          },
-        ],
-      },
-      {
-        key: "Animal",
-        type: "MonsterSubcategory",
-        children: [
-          {
-            key: "Dandylion",
-            type: "Monster",
-          },
-          {
-            key: "Goose Mother",
-            type: "Monster",
-          },
-        ],
-      },
-      {
-        key: "Fungi & Plant",
-        type: "MonsterSubcategory",
-        children: [
-          {
-            key: "Blubbering shroom",
-            type: "Monster",
-          },
-        ],
+        key: Size.huge,
+        type: "Size",
       },
     ],
   },
