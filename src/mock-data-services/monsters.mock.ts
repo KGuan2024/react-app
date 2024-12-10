@@ -42,6 +42,13 @@ export const mockMonstersData = [
     size: Size.medium,
   },
   {
+    name: "Brown Bear",
+    category: "Beast",
+    subcategory: "Mammal",
+    subtype: "Bears",
+    size: Size.medium,
+  },
+  {
     name: "Kenku",
     category: "Beast",
     subcategory: "Avian",
@@ -105,21 +112,21 @@ export const mockMonstersData = [
     name: "Sea Hag",
     category: "Fey",
     subcategory: "Humanoid",
-    subtype: "Hag",
+    subtype: "Hags",
     size: Size.medium,
   },
   {
     name: "Dusk Hag",
     category: "Fey",
     subcategory: "Humanoid",
-    subtype: "Hag",
+    subtype: "Hags",
     size: Size.medium,
   },
   {
     name: "Swamp Hag",
     category: "Fey",
     subcategory: "Humanoid",
-    subtype: "Hag",
+    subtype: "Hags",
     size: Size.medium,
   },
   {
@@ -179,20 +186,23 @@ export function getFilteredMonsters(filters: Filter[]) {
 
 function filterMonsters(flatFilters: FlatMonsterFilters, monsters: Monster[]) {
   return monsters.filter((monster) => {
+    const noCategoryFilters =
+      !flatFilters.category.length &&
+      !flatFilters.subcategory.length &&
+      !flatFilters.subtype.length;
     const categoryMatch =
-      !flatFilters.category.length ||
-      flatFilters.category.includes(monster.category);
+      noCategoryFilters || flatFilters.category.includes(monster.category);
     const subcategoryMatch =
-      !flatFilters.subcategory.length ||
+      noCategoryFilters ||
       flatFilters.subcategory.includes(monster.subcategory);
     const subtypeMatch =
-      !flatFilters.subtype.length ||
+      noCategoryFilters ||
       (monster.subtype && flatFilters.subtype.includes(monster.subtype));
 
     const sizeMatch =
       !flatFilters.size.length || flatFilters.size.includes(monster.size);
 
-    return subcategoryMatch && subtypeMatch && sizeMatch;
+    return (subcategoryMatch || subtypeMatch) && sizeMatch;
   });
 }
 
@@ -224,7 +234,7 @@ function addFlatFilter(filter: Filter, flatFilters: FlatMonsterFilters) {
     case "MonsterSubcategory":
       flatFilters.subcategory.push(filter.key);
       break;
-    case "MonsterType":
+    case "Monster":
       flatFilters.subtype.push(filter.key);
       break;
     case "Size":

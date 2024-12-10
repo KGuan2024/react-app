@@ -24,6 +24,10 @@ const monstersMockFilters: Filter[] = [
                 key: "Wolves",
                 type: "Monster",
               },
+              {
+                key: "Bears",
+                type: "Monster",
+              },
             ],
           },
           {
@@ -74,15 +78,11 @@ const monstersMockFilters: Filter[] = [
             children: [
               {
                 key: "Hags",
-                type: "MonsterType",
-              },
-              {
-                key: "Satyr",
                 type: "Monster",
               },
               {
                 key: "Dryad",
-                type: "MonsterType",
+                type: "Monster",
               },
             ],
           },
