@@ -4,7 +4,11 @@ import FilterTree, {
   SelectedState,
 } from "./reuseable-components/filters/FilterTree";
 import { useMonstersFilterStore } from "./stores/filters/monster-filters.store";
-import { mockMonstersData, Monster } from "./mock-data-services/monsters.mock";
+import {
+  getFilteredMonsters,
+  mockMonstersData,
+  Monster,
+} from "./mock-data-services/monsters.mock";
 import { ColDef } from "ag-grid-community";
 import { AgGridReact } from "ag-grid-react";
 import styles from "./Monsters.module.css";
@@ -19,6 +23,7 @@ interface FlatMonsterFilters {
 
 function Monsters() {
   const filters = useMonstersFilterStore((state) => state.filters);
+  const resetFilters = useMonstersFilterStore((state) => state.reset);
   const updateSelectedFilters = useMonstersFilterStore(
     (state) => state.updateSelectedFilters
   );
@@ -30,84 +35,13 @@ function Monsters() {
 
   useEffect(() => {
     // on filter change, filter displayed monsters data
-    // in real life this would be using an api instead but this is the best we got for now
-    // move out to mocks and simulate it like an api call with small timeout and async await ?
-
-    let flatFilters: FlatMonsterFilters = {
-      category: [],
-      subcategory: [],
-      subtype: [],
-      size: [],
-    };
-    filters.forEach((filter) => {
-      // we aint applying the top level ones if those are selected/deselected
-      getFlatFilterStructure(filter.children || [], flatFilters);
-    });
-    const filteredMonsters: Monster[] = filterMonsters(flatFilters, [
-      ...mockMonstersData,
-    ]);
+    const filteredMonsters = getFilteredMonsters(filters);
     setRowData(filteredMonsters);
   }, [filters]);
 
-  function filterMonsters(
-    flatFilters: FlatMonsterFilters,
-    monsters: Monster[]
-  ) {
-    return monsters.filter((monster) => {
-      const categoryMatch =
-        !flatFilters.category.length ||
-        flatFilters.category.includes(monster.category);
-      const subcategoryMatch =
-        !flatFilters.subcategory.length ||
-        flatFilters.subcategory.includes(monster.subcategory);
-      const subtypeMatch =
-        !flatFilters.subtype.length ||
-        (monster.subtype && flatFilters.subtype.includes(monster.subtype));
-
-      const sizeMatch =
-        !flatFilters.size.length || flatFilters.size.includes(monster.size);
-
-      return categoryMatch && subcategoryMatch && subtypeMatch && sizeMatch;
-    });
-  }
-
-  function getFlatFilterStructure(
-    filters: Filter[],
-    flatFilters: FlatMonsterFilters
-  ) {
-    filters.forEach((filter) => {
-      if (
-        filter.selectedState === SelectedState.All ||
-        (!hasChildren(filter) && filter.selectedState)
-      ) {
-        addFlatFilter(filter, flatFilters);
-      } else if (
-        filter.children &&
-        (filter.selectedState as SelectedState) === SelectedState.Some
-      ) {
-        getFlatFilterStructure(filter.children, flatFilters);
-      }
-    });
-  }
-
-  function addFlatFilter(filter: Filter, flatFilters: FlatMonsterFilters) {
-    switch (filter.type) {
-      case "MonsterCategory":
-        flatFilters.category.push(filter.key);
-        break;
-      case "MonsterSubcategory":
-        flatFilters.subcategory.push(filter.key);
-        break;
-      case "MonsterType":
-        flatFilters.subtype.push(filter.key);
-        break;
-      case "Size":
-        flatFilters.size.push(filter.key);
-        break;
-
-      default:
-    }
-  }
+  useEffect(() => {
+    resetFilters();
+  }, []);
 
   const colDefs: ColDef[] = [
     {

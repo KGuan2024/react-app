@@ -1,3 +1,9 @@
+import { hasChildren } from "../reuseable-components/filters/filter-utils";
+import {
+  Filter,
+  SelectedState,
+} from "../reuseable-components/filters/FilterTree";
+
 export enum Size {
   small = "Small",
   medium = "Medium",
@@ -11,6 +17,13 @@ export interface Monster {
   subcategory: string;
   subtype?: string;
   size: Size;
+}
+
+interface FlatMonsterFilters {
+  category: string[];
+  subcategory: string[];
+  subtype: string[];
+  size: string[];
 }
 
 export const mockMonstersData = [
@@ -143,3 +156,81 @@ export const mockMonstersData = [
     size: Size.huge,
   },
 ];
+
+// business logic that would belong in the backend (if we had one)
+
+export function getFilteredMonsters(filters: Filter[]) {
+  // in real life this would be an api but unfortunately we have to use this instead
+  let flatFilters: FlatMonsterFilters = {
+    category: [],
+    subcategory: [],
+    subtype: [],
+    size: [],
+  };
+  filters.forEach((filter) => {
+    // we aint applying the top level ones if those are selected/deselected
+    setFlatFilterStructure(filter.children || [], flatFilters);
+  });
+  const filteredMonsters: Monster[] = filterMonsters(flatFilters, [
+    ...mockMonstersData,
+  ]);
+  return filteredMonsters;
+}
+
+function filterMonsters(flatFilters: FlatMonsterFilters, monsters: Monster[]) {
+  return monsters.filter((monster) => {
+    const categoryMatch =
+      !flatFilters.category.length ||
+      flatFilters.category.includes(monster.category);
+    const subcategoryMatch =
+      !flatFilters.subcategory.length ||
+      flatFilters.subcategory.includes(monster.subcategory);
+    const subtypeMatch =
+      !flatFilters.subtype.length ||
+      (monster.subtype && flatFilters.subtype.includes(monster.subtype));
+
+    const sizeMatch =
+      !flatFilters.size.length || flatFilters.size.includes(monster.size);
+
+    return subcategoryMatch && subtypeMatch && sizeMatch;
+  });
+}
+
+function setFlatFilterStructure(
+  filters: Filter[],
+  flatFilters: FlatMonsterFilters
+) {
+  filters.forEach((filter) => {
+    if (
+      filter.selectedState === SelectedState.All ||
+      (!hasChildren(filter) && filter.selectedState)
+    ) {
+      addFlatFilter(filter, flatFilters);
+      setFlatFilterStructure(filter.children || [], flatFilters);
+    } else if (
+      filter.children &&
+      (filter.selectedState as SelectedState) === SelectedState.Some
+    ) {
+      setFlatFilterStructure(filter.children, flatFilters);
+    }
+  });
+}
+
+function addFlatFilter(filter: Filter, flatFilters: FlatMonsterFilters) {
+  switch (filter.type) {
+    case "MonsterCategory":
+      flatFilters.category.push(filter.key);
+      break;
+    case "MonsterSubcategory":
+      flatFilters.subcategory.push(filter.key);
+      break;
+    case "MonsterType":
+      flatFilters.subtype.push(filter.key);
+      break;
+    case "Size":
+      flatFilters.size.push(filter.key);
+      break;
+
+    default:
+  }
+}
