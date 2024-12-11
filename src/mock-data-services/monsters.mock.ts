@@ -190,8 +190,6 @@ function filterMonsters(flatFilters: FlatMonsterFilters, monsters: Monster[]) {
       !flatFilters.category.length &&
       !flatFilters.subcategory.length &&
       !flatFilters.subtype.length;
-    const categoryMatch =
-      noCategoryFilters || flatFilters.category.includes(monster.category);
     const subcategoryMatch =
       noCategoryFilters ||
       flatFilters.subcategory.includes(monster.subcategory);

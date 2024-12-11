@@ -33,16 +33,6 @@ const monstersMockFilters: Filter[] = [
           {
             key: "Avian",
             type: "MonsterSubcategory",
-            // children: [
-            //   {
-            //     key: "Roc",
-            //     type: "Monster",
-            //   },
-            //   {
-            //     key: "Kenku",
-            //     type: "Monster",
-            //   },
-            // ],
           },
         ],
       },
@@ -89,16 +79,6 @@ const monstersMockFilters: Filter[] = [
           {
             key: "Animal",
             type: "MonsterSubcategory",
-            // children: [
-            //   {
-            //     key: "Dandylion",
-            //     type: "Monster",
-            //   },
-            //   {
-            //     key: "Goose Mother",
-            //     type: "Monster",
-            //   },
-            // ],
           },
         ],
       },

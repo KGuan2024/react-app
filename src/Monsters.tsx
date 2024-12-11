@@ -1,8 +1,5 @@
 import { useEffect, useState } from "react";
-import FilterTree, {
-  Filter,
-  SelectedState,
-} from "./reuseable-components/filters/FilterTree";
+import FilterTree from "./reuseable-components/filters/FilterTree";
 import { useMonstersFilterStore } from "./stores/filters/monster-filters.store";
 import {
   getFilteredMonsters,
@@ -12,14 +9,6 @@ import {
 import { ColDef } from "ag-grid-community";
 import { AgGridReact } from "ag-grid-react";
 import styles from "./Monsters.module.css";
-import { hasChildren } from "./reuseable-components/filters/filter-utils";
-
-interface FlatMonsterFilters {
-  category: string[];
-  subcategory: string[];
-  subtype: string[];
-  size: string[];
-}
 
 function Monsters() {
   const filters = useMonstersFilterStore((state) => state.filters);

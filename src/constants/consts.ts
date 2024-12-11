@@ -17,8 +17,17 @@ export enum Dice {
 }
 
 export enum ArmorTypes {
-  light = "light armor",
-  medium = "medium armor",
-  heavy = "heavy armor",
-  shields = "shields",
+  light = "Light armor",
+  medium = "Medium armor",
+  heavy = "Heavy armor",
+  shields = "Shields",
+}
+
+export enum WeaponTypes {
+  simple = "Simple weapons",
+  martial = "Martial weapons",
+  crossbows = "Crossbows",
+  longswords = "Longswords",
+  shortswords = "Shortswords",
+  rapiers = "Rapiers",
 }

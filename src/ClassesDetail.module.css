@@ -1,0 +1,64 @@
+.classDetailContainer {
+    padding: 2rem;
+    /* background-image: linear-gradient(to top right, #c3c3c3, #fbfcff); */
+    background-color: #fbfcff;
+}
+
+.classData {
+    max-width: 800px;
+    font-size: 14px;
+    img {
+        width: 300px;
+        max-width: 40%;
+        height: auto;
+        min-height: 200px;
+        object-fit: contain;
+    }
+}
+
+.imageDescriptionContainer {
+    display: flex;
+    gap: 1rem;
+}
+
+.header {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 2rem;
+}
+
+.description {
+    font-size: 16px;
+    flex-grow: 1;
+}
+
+.sectionHeader {
+    margin: 1rem 0 0.8rem 0;
+    font-weight: bold;
+    font-size: 1rem;
+    border-top: 1px solid grey;
+    padding: 0.5rem 0;
+}
+
+.list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.inlineList {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.proficiencyName {
+    margin-right: 0.5rem;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+/* .skillSection {
+    margin: 0.5rem 0;
+} */
