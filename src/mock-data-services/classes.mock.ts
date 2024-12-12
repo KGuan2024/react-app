@@ -38,6 +38,7 @@ export const mockClassesData: ClassDetail[] = [
         values: [Stats.Strength, Stats.Con],
       },
     ],
+    image: "barbarian.jpg",
     classSkills: [
       {
         name: "Rage",
@@ -117,6 +118,7 @@ export const mockClassesData: ClassDetail[] = [
         values: [Stats.Dex, Stats.Int],
       },
     ],
+    image: "rogue.jpg",
     classSkills: [
       {
         name: "Expertise",
@@ -201,6 +203,7 @@ export const mockClassesData: ClassDetail[] = [
         values: [Stats.Dex, Stats.Charisma],
       },
     ],
+    image: "bard.jpg",
     classSkills: [
       {
         name: "Bardic Inspiration",

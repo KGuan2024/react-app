@@ -46,10 +46,12 @@ function ClassesDetail() {
     return (
       <section className={styles.list}>
         {data.classSkills.map((skill) => (
-          <div key={skill.name} className={styles.skillSection}>
+          <div key={skill.name}>
             <div className={styles.inlineList}>
-              <span className={styles.bold}>{skill.name}</span>
-              <span>(Level {skill.level})</span>
+              <span className={`${styles.bold} ${styles.skillName}`}>
+                {skill.name}
+              </span>
+              <span className={styles.level}>(Level {skill.level})</span>
             </div>
             <div>{skill.description}</div>
           </div>
@@ -70,7 +72,7 @@ function ClassesDetail() {
         <div className={styles.classData}>
           <div className={styles.header}> {data.name}</div>
           <section className={styles.imageDescriptionContainer}>
-            <img src={data.image}></img>
+            <img src={`/images/${data.image}`}></img>
             <div className={styles.description}>{data.description}</div>
           </section>
 

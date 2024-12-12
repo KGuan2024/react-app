@@ -1,0 +1,14 @@
+.nav {
+    /* border-right: 1px solid white; */
+    background-color: #2f2f2f;
+    display: flex;
+    flex-direction: column;
+    padding: 2rem 0.8rem;
+    /* border-radius: 8px; */
+    gap: 1rem;
+    max-width: 130px;
+
+    a {
+        color: #f3f3f3;
+    }
+}
