@@ -1,5 +1,42 @@
 .container {
     display: flex;
+    flex-direction: column;
+    padding: 1rem 0 0 0 ;
+    height: 100%;
+    gap: 1rem;
+    box-sizing: border-box;
+
+    header {
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
+
+    Button {
+        width: fit-content;
+    }
+
+    header, Button {
+        margin-left: 1rem;
+    }
+}
+
+
+
+.filtersAndGridContainer {
+    position: relative;
+    display: flex;
+    flex-grow: 1;
+}
+
+.filtersContainer {
+    position: absolute;
+    width: fit-content;
+    height: 100%;
+    z-index: 10;
+    background: white;
+    border-right: 1px solid #b1b1b1;
+    box-shadow: 10px 10px 30px -8px rgba(0,0,0,0.34);
+
 }
 
 .gridContainer {

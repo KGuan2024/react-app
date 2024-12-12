@@ -9,8 +9,13 @@ import {
 import { ColDef } from "ag-grid-community";
 import { AgGridReact } from "ag-grid-react";
 import styles from "./Monsters.module.css";
+import { defaultGridOptions } from "./constants/grid.const";
+import Button from "@mui/material/Button";
 
 function Monsters() {
+  const gridOptions = {
+    ...defaultGridOptions,
+  };
   const filters = useMonstersFilterStore((state) => state.filters);
   const resetFilters = useMonstersFilterStore((state) => state.reset);
   const updateSelectedFilters = useMonstersFilterStore(
@@ -21,6 +26,7 @@ function Monsters() {
   );
 
   const [rowData, setRowData] = useState<Monster[]>(mockMonstersData);
+  const [showFilters, setShowFilters] = useState<boolean>(false);
 
   useEffect(() => {
     // on filter change, filter displayed monsters data
@@ -31,6 +37,10 @@ function Monsters() {
   useEffect(() => {
     resetFilters();
   }, []);
+
+  function toggleFilters() {
+    setShowFilters(!showFilters);
+  }
 
   const colDefs: ColDef[] = [
     {
@@ -50,19 +60,29 @@ function Monsters() {
 
   return (
     <div className={styles.container}>
-      <div>
-        {FilterTree({
-          filters: filters,
-          selectFilterHandler: updateSelectedFilters,
-          toggleHandler: updateExpandedFilters,
-        })}
-      </div>
+      <header>Monsters</header>
+      <Button variant="contained" onClick={() => toggleFilters()}>
+        Filters
+      </Button>
 
-      <div
-        className={`${styles.gridContainer} ag-theme-quartz`}
-        style={{ height: 500 }} // the Data Grid will fill the size of the parent container
-      >
-        <AgGridReact<Monster> rowData={rowData} columnDefs={colDefs as any[]} />
+      <div className={styles.filtersAndGridContainer}>
+        {showFilters && (
+          <div className={styles.filtersContainer}>
+            {FilterTree({
+              filters: filters,
+              selectFilterHandler: updateSelectedFilters,
+              toggleHandler: updateExpandedFilters,
+            })}
+          </div>
+        )}
+
+        <div className={`${styles.gridContainer} ag-theme-quartz`}>
+          <AgGridReact<Monster>
+            rowData={rowData}
+            columnDefs={colDefs as any[]}
+            gridOptions={gridOptions as any}
+          />
+        </div>
       </div>
     </div>
   );

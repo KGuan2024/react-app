@@ -1,0 +1,53 @@
+.filterTreeContainer {
+    padding: 0.8rem;
+}
+
+.filterSection {
+
+    position: relative;
+/* 
+    &:last-child {
+        ::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: -1px;
+            width: 2px;
+            height: 20px;
+            background-color: white;
+        }
+    } */
+
+}
+
+.parentFilterContainer {
+    display:inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.horizontalLead {
+    width: 8px; 
+    height: 1px;
+    background: grey;
+}
+
+.childFilterSection {
+    margin-left: 8px;
+    border-left: 1px solid grey;
+
+    position: relative;
+    
+        &:last-of-type{
+            &::after {
+                content: "";
+                position: absolute;
+                bottom: 0;
+                left: -1px;
+                width: 2px;
+                height: 20px;
+                background-color: white;
+            }
+        }
+
+}

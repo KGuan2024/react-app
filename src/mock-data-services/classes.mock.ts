@@ -1,5 +1,11 @@
-import { ArmorTypes, Stats, WeaponTypes } from "../constants/consts";
-
+import { ArmorTypes, Dice, Stats, WeaponTypes } from "../constants/consts";
+export interface ClassesGridData {
+  name: string;
+  description?: string;
+  hitDice: string;
+  keyStats: Stats[];
+  saves: Stats[];
+}
 export interface Proficiency {
   name: string;
   values: string[];
@@ -17,6 +23,39 @@ export interface ClassDetail {
   proficiencies: Proficiency[];
   classSkills: ClassSkills[];
 }
+
+export const mockClassesGridData: ClassesGridData[] = [
+  {
+    name: "Barbarian",
+    description: "Strong fighters who rage in battle",
+    hitDice: Dice.D12,
+    keyStats: [Stats.Strength],
+    saves: [Stats.Strength, Stats.Con],
+  },
+  {
+    name: "Rogue",
+    hitDice: Dice.D8,
+    description:
+      "Sneaky and dextrous. Can pick locks, pick pockets, and disarm traps",
+    keyStats: [Stats.Dex],
+    saves: [Stats.Dex, Stats.Int],
+  },
+  {
+    name: "Bard",
+    description: "Masters of performance and highly charismatic",
+    hitDice: Dice.D8,
+    keyStats: [Stats.Charisma],
+    saves: [Stats.Charisma, Stats.Dex],
+  },
+  {
+    name: "Paladin",
+    description:
+      "Heavily armored fighters who have sworn an oath and can devastate with their divine strikes",
+    hitDice: Dice.D10,
+    keyStats: [Stats.Strength, Stats.Charisma],
+    saves: [Stats.Charisma, Stats.Wisdom],
+  },
+];
 export const mockClassesData: ClassDetail[] = [
   {
     id: "Barbarian",

@@ -1,6 +1,6 @@
 import FolderChipset from "../chipsets/FolderChipset";
 import { hasChildren } from "./filter-utils";
-
+import styles from "./FilterTree.module.css";
 export interface Filter {
   key: string;
   type: string;
@@ -31,14 +31,10 @@ function FilterTree({
     parentIndexPath: number[] = []
   ) {
     const mappedFilters = filters?.map((filter: Filter, index: number) => (
-      <section key={filter.key}>
-        <div
-          style={{ display: "inline-flex", alignItems: "center", gap: "4px" }}
-        >
+      <section key={filter.key} className={styles.filterSection}>
+        <div className={styles.parentFilterContainer}>
           {parentIndexPath.length > 0 && (
-            <div
-              style={{ width: "8px", height: "1px", background: "grey" }}
-            ></div>
+            <div className={styles.horizontalLead}></div>
           )}
 
           {FolderChipset({
@@ -56,12 +52,7 @@ function FilterTree({
         </div>
 
         {filter.expanded && (
-          <div
-            style={{
-              marginLeft: "8px",
-              borderLeft: "1px solid grey",
-            }}
-          >
+          <div className={styles.childFilterSection}>
             {RenderFiltersList(
               filter.children || [],
               parentIndexPath.concat(index)
@@ -73,7 +64,11 @@ function FilterTree({
     return mappedFilters;
   }
 
-  return <>{RenderFiltersList(filters, [])}</>;
+  return (
+    <div className={styles.filterTreeContainer}>
+      {RenderFiltersList(filters, [])}
+    </div>
+  );
 }
 
 export default FilterTree;
