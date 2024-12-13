@@ -3,6 +3,7 @@ import { Button, Checkbox, FormControlLabel, SvgIcon } from "@mui/material";
 import { ReactComponent as openIcon } from "../../assets/icons/angle-down-solid.svg";
 import { ReactComponent as closeIcon } from "../../assets/icons/angle-up-solid.svg";
 import { SelectedState } from "../filters/FilterTree";
+import styles from "./FolderChipset.module.css";
 
 interface FolderChipsetProps {
   label: string;
@@ -21,7 +22,7 @@ function FolderChipset({
   toggleHandler,
 }: FolderChipsetProps) {
   return (
-    <div style={{ display: "inline-flex", alignItems: "center", gap: "4px" }}>
+    <div className={styles.folderChipsetContainer}>
       <FormControlLabel
         label={label}
         control={
@@ -33,15 +34,8 @@ function FolderChipset({
         }
       />
       {expandable && (
-        <Button
-          style={{ justifyContent: "flex-start" }}
-          onClick={() => toggleHandler()}
-        >
-          <SvgIcon
-            style={{ pointerEvents: "none" }}
-            component={expanded ? closeIcon : openIcon}
-            inheritViewBox
-          />
+        <Button className={styles.toggleButton} onClick={() => toggleHandler()}>
+          <SvgIcon component={expanded ? closeIcon : openIcon} inheritViewBox />
         </Button>
       )}
     </div>

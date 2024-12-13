@@ -1,0 +1,13 @@
+.folderChipsetContainer {
+    display: "inline-flex";
+    align-items: "center";
+    gap: "4px";
+}
+
+.toggleButton {
+    justify-content: "flex-start";
+
+    svg {
+        pointer-events: "none";
+    }
+}
