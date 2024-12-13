@@ -5,7 +5,7 @@ import {
   updateExpandedFilters,
   updateSelectedFilters,
 } from "../../reuseable-components/filters/filter-utils";
-import { Size } from "../../mock-data-services/monsters.mock";
+import { Size } from "../../constants/consts";
 
 const monstersMockFilters: Filter[] = [
   {
@@ -89,19 +89,19 @@ const monstersMockFilters: Filter[] = [
     type: "SizeCategory",
     children: [
       {
-        key: Size.small,
+        key: Size[Size.small],
         type: "Size",
       },
       {
-        key: Size.medium,
+        key: Size[Size.medium],
         type: "Size",
       },
       {
-        key: Size.large,
+        key: Size[Size.large],
         type: "Size",
       },
       {
-        key: Size.huge,
+        key: Size[Size.huge],
         type: "Size",
       },
     ],

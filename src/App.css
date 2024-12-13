@@ -2,3 +2,7 @@
   font-family: 'Morris-Roman';
   src: local('Morris-Roman'), url(./assets/fonts/MorrisRoman-Black.ttf) format('truetype');
 }
+
+body .ag-root-wrapper  {
+  --ag-cell-horizontal-padding: 8px;
+}

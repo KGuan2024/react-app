@@ -34,7 +34,7 @@
         /* white-space: nowrap; */
         overflow:hidden;
         white-space: break-spaces;
-        line-height: 1.2;
+        line-height: 1.3;
         display: -webkit-box;
         -webkit-line-clamp: 2;
         line-clamp: 2;

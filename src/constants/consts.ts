@@ -31,3 +31,11 @@ export enum WeaponTypes {
   shortswords = "Shortswords",
   rapiers = "Rapiers",
 }
+
+export enum Size {
+  tiny,
+  small,
+  medium,
+  large,
+  huge,
+}

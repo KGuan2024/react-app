@@ -1,15 +1,9 @@
+import { Size } from "../constants/consts";
 import { hasChildren } from "../reuseable-components/filters/filter-utils";
 import {
   Filter,
   SelectedState,
 } from "../reuseable-components/filters/FilterTree";
-
-export enum Size {
-  small = "Small",
-  medium = "Medium",
-  large = "Large",
-  huge = "Huge",
-}
 
 export interface Monster {
   name: string;
@@ -198,7 +192,7 @@ function filterMonsters(flatFilters: FlatMonsterFilters, monsters: Monster[]) {
       (monster.subtype && flatFilters.subtype.includes(monster.subtype));
 
     const sizeMatch =
-      !flatFilters.size.length || flatFilters.size.includes(monster.size);
+      !flatFilters.size.length || flatFilters.size.includes(Size[monster.size]);
 
     return (subcategoryMatch || subtypeMatch) && sizeMatch;
   });

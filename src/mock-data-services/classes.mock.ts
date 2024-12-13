@@ -73,7 +73,7 @@ export const mockClassesData: ClassDetail[] = [
         values: [WeaponTypes.simple, WeaponTypes.martial],
       },
       {
-        name: "savingThrows",
+        name: "Saving Throws",
         values: [Stats.Strength, Stats.Con],
       },
     ],
@@ -153,7 +153,7 @@ export const mockClassesData: ClassDetail[] = [
         ],
       },
       {
-        name: "savingThrows",
+        name: "Saving Throws",
         values: [Stats.Dex, Stats.Int],
       },
     ],
@@ -238,11 +238,81 @@ export const mockClassesData: ClassDetail[] = [
         ],
       },
       {
-        name: "savingThrows",
+        name: "Saving Throws",
         values: [Stats.Dex, Stats.Charisma],
       },
     ],
     image: "bard.jpg",
+    classSkills: [
+      {
+        name: "Bardic Inspiration",
+        description: "Inspire your allies via a pep talk or some sick tunes",
+        level: 1,
+      },
+      {
+        name: "Jack of All Trades",
+        description: "Become slightly better at everything",
+        level: 1,
+      },
+      {
+        name: "Song of Rest",
+        description:
+          "Allies heal more during resting thanks to your amsr background music",
+        level: 1,
+      },
+      {
+        name: "Expertise",
+        description: "You are extra good at things",
+        level: 2,
+      },
+      {
+        name: "Font of Inspiration",
+        description: "After resting you can inspire your allies once more",
+        level: 5,
+      },
+      {
+        name: "Countercharm",
+        description: `"Anyway, here's wonderwall." Start a musical performance to protect your party from mind influencing effects`,
+        level: 6,
+      },
+      {
+        name: "Magical Secrets",
+        description: "Gain some nifty new spells. And again at level 14 and 18",
+        level: 10,
+      },
+      {
+        name: "Superior Inspiration",
+        description: "Restock your inspiration if you start battle without any",
+        level: 20,
+      },
+    ],
+  },
+  {
+    id: "Paladin",
+    name: "Paladin",
+    description: "Big knight very divine",
+
+    proficiencies: [
+      {
+        name: "Armor",
+        values: [ArmorTypes.light, ArmorTypes.medium, ArmorTypes.heavy],
+      },
+      {
+        name: "Weapons",
+        values: [
+          WeaponTypes.simple,
+          WeaponTypes.crossbows,
+          WeaponTypes.longswords,
+          WeaponTypes.rapiers,
+          WeaponTypes.shortswords,
+        ],
+      },
+      {
+        name: "Saving Throws",
+        values: [Stats.Strength, Stats.Charisma],
+      },
+    ],
+    image: "paladin.jpg",
     classSkills: [
       {
         name: "Bardic Inspiration",

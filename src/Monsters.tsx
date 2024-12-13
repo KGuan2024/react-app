@@ -11,6 +11,7 @@ import { AgGridReact } from "ag-grid-react";
 import styles from "./Monsters.module.css";
 import { defaultGridOptions } from "./constants/grid.const";
 import Button from "@mui/material/Button";
+import { Size } from "./constants/consts";
 
 function Monsters() {
   const gridOptions = {
@@ -54,7 +55,13 @@ function Monsters() {
     },
     {
       field: "size",
-      // put custom sort here
+      valueGetter: (params) => {
+        const size = Size[params.data.size] || "";
+        return `${size[0].toUpperCase()}${size.slice(1)}`;
+      },
+      comparator: (a, b) => {
+        return a > b ? -1 : 1;
+      },
     },
   ];
 
