@@ -70,7 +70,7 @@ function ClassesDetail() {
     return (
       <div className={styles.classDetailContainer}>
         <div className={styles.classData}>
-          <div className={styles.header}> {data.name}</div>
+          <header className={styles.header}> {data.name}</header>
           <section className={styles.imageDescriptionContainer}>
             <img src={`/images/${data.image}`}></img>
             <div className={styles.description}>{data.description}</div>

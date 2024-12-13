@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import FilterTree from "./reuseable-components/filters/FilterTree";
 import { useMonstersFilterStore } from "./stores/filters/monster-filters.store";
 import {
@@ -14,6 +14,8 @@ import Button from "@mui/material/Button";
 import { Size } from "./constants/consts";
 
 function Monsters() {
+  const ref = useRef<HTMLDivElement>(null);
+
   const gridOptions = {
     ...defaultGridOptions,
   };
@@ -38,6 +40,24 @@ function Monsters() {
   useEffect(() => {
     resetFilters();
   }, []);
+
+  useEffect(() => {
+    const handleClick = (event: MouseEvent) => {
+      if (ref.current && !ref.current.contains(event.target as HTMLElement)) {
+        setShowFilters(false);
+      }
+    };
+
+    if (showFilters) {
+      setTimeout(() => {
+        document.addEventListener("click", handleClick);
+      });
+
+      return () => {
+        document.removeEventListener("click", handleClick);
+      };
+    }
+  }, [showFilters]);
 
   function toggleFilters() {
     setShowFilters(!showFilters);
@@ -74,11 +94,12 @@ function Monsters() {
 
       <div className={styles.filtersAndGridContainer}>
         {showFilters && (
-          <div className={styles.filtersContainer}>
+          <div className={styles.filtersContainer} ref={ref}>
             {FilterTree({
               filters: filters,
               selectFilterHandler: updateSelectedFilters,
               toggleHandler: updateExpandedFilters,
+              clickOutsideHandler: () => setShowFilters(false),
             })}
           </div>
         )}

@@ -17,8 +17,10 @@ export enum SelectedState {
 
 interface FolderChipsetProps {
   filters: Filter[];
+  showFilters?: boolean;
   selectFilterHandler: Function;
   toggleHandler: Function;
+  clickOutsideHandler: Function;
 }
 
 function FilterTree({

@@ -7,8 +7,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #2f2f2f;
-    color: #f3f3f3;
+    /* background-color: #2f2f2f; */
+    background-color:#dddacf;
+    /* color: #f3f3f3; */
+    color: #671c1c;
     border-bottom: 1px solid white;
     font-family: 'Morris-Roman';
     letter-spacing: 2px;
@@ -33,4 +35,5 @@
 .contentContainer {
     display: block;
     flex-grow: 1;
+    overflow: auto;
 }

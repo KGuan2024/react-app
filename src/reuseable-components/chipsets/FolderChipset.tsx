@@ -37,7 +37,11 @@ function FolderChipset({
           style={{ justifyContent: "flex-start" }}
           onClick={() => toggleHandler()}
         >
-          <SvgIcon component={expanded ? closeIcon : openIcon} inheritViewBox />
+          <SvgIcon
+            style={{ pointerEvents: "none" }}
+            component={expanded ? closeIcon : openIcon}
+            inheritViewBox
+          />
         </Button>
       )}
     </div>
