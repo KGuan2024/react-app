@@ -3,6 +3,17 @@
   src: local('Morris-Roman'), url(./assets/fonts/MorrisRoman-Black.ttf) format('truetype');
 }
 
+body {
+  scrollbar-width: thin;
+  scrollbar-color: rgb(46, 46, 46) white;
+
+}
 body .ag-root-wrapper  {
   --ag-cell-horizontal-padding: 8px;
+  
+}
+
+header {
+  font-family: 'Morris-Roman';
+  letter-spacing: 2px;
 }
