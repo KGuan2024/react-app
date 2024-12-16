@@ -1,7 +1,11 @@
 import { GridOptions } from "ag-grid-community";
+import Loading from "../reuseable-components/loading/Loading";
 
 export const defaultGridOptions: GridOptions = {
   onGridReady: (params) => {
+    params.api.sizeColumnsToFit();
+  },
+  onModelUpdated: (params) => {
     params.api.sizeColumnsToFit();
   },
   onGridSizeChanged: (event) => {
@@ -9,8 +13,5 @@ export const defaultGridOptions: GridOptions = {
       event.api.sizeColumnsToFit();
     }
   },
-  // loadingOverlayComponent: LoadingOverlayComponent,
-  // loadingOverlayComponentParams: {
-  //   header: "Loading Data",
-  // },
+  loadingOverlayComponent: Loading,
 };

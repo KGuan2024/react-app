@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import {
   ClassDetail,
@@ -6,30 +5,14 @@ import {
 } from "./mock-data-services/classes.mock";
 import styles from "./ClassesDetail.module.css";
 import { useQuery } from "./hooks/useQuery.hook";
+import Loading from "./reuseable-components/loading/Loading";
 
 function ClassesDetail() {
-  // const [error, setError] = useState<boolean>(false);
   const { classId } = useParams();
-  // const [data, setData] = useState<ClassDetail>();
-
   const { data, loading, error } = useQuery<ClassDetail>(
     getClassDetails,
     classId
   );
-
-  // do some loading screens if you simulate a timeout
-  // useEffect(() => {
-  //   if (!classId) {
-  //     return;
-  //   }
-
-  //   // turn this into reuseable hook for error, loading , data etc ?
-  //   getClassDetails(classId)
-  //     .then((classData) => {
-  //       setData(classData);
-  //     })
-  //     .catch((error) => setError(true));
-  // }, [classId]);
 
   function listProficiencies(data: ClassDetail) {
     return (
@@ -65,10 +48,10 @@ function ClassesDetail() {
   }
 
   if (loading) {
-    return <div>LOADING</div>;
+    return <Loading></Loading>;
   }
   if (error) {
-    return <div>Error</div>;
+    return <div className={styles.classDetailContainer}>Class not found</div>;
   }
   return (
     <div className={styles.classDetailContainer}>

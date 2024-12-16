@@ -26,16 +26,8 @@ function Monsters() {
   );
 
   const { data, loading, error } = useQuery(getMonsters, filters);
-
-  // const [rowData, setRowData] = useState<Monster[]>(mockMonstersData);
   const rowData = data;
   const [showFilters, setShowFilters] = useState<boolean>(false);
-
-  // useEffect(() => {
-  //   // on filter change, filter displayed monsters data
-  //   const filteredMonsters = getFilteredMonsters(filters);
-  //   setRowData(filteredMonsters);
-  // }, [filters]);
 
   useEffect(() => {
     resetFilters();
