@@ -1,14 +1,13 @@
 .classDetailContainer {
-    padding: 2rem;
-    /* background-image: linear-gradient(to top right, #c3c3c3, #fbfcff); */
-    /* background-color: #fbfcff; */
-    background-color: #3b3b3b;
-    color: #f3f3f3;
+    padding: var(--spacing-xl);
+    background-color:var(--bg-dark-secondary);
+    color: var(--text-light);
 }
 
 .classData {
     max-width: 800px;
-    font-size: 14px;
+    font-size: var(--font-sm);
+
     img {
         flex-basis: 40%;
         max-width: 240px;
@@ -16,43 +15,53 @@
         max-height: 200px;
         object-fit: cover;
         object-position: top;
+        border: 2px solid var(--bg-light);
+        border-radius: var(--spacing-m);
     }
+}
+
+.dataSections {
+    background-image: url("./assets/images/parchment.jpg");
+    background-size: cover;
+    color: var(--text-dark);
+    padding: var(--spacing-l);
+    border-radius: var(--spacing-l);
 }
 
 .imageDescriptionContainer {
     display: flex;
     flex-wrap: wrap;
     align-items: flex-start;
-    gap: 1rem;
+    gap: var(--spacing-m);
 
 }
 
 .header {
-    font-size: 1.5rem;
+    font-size: var(--font-l);
     font-weight: bold;
-    margin-bottom: 1rem;
-    padding-bottom: 1rem;
-    border-bottom: 1px solid grey;
+    margin-bottom: var(--spacing-m);
+    padding-bottom: var(--spacing-m);
+    border-bottom: 1px solid var(--border);
 }
 
 .description {
-    font-size: 14px;
+    font-size: var(--font-sm);
     flex-grow: 1;
     flex-basis: 55%;
 }
 
 .sectionHeader {
-    margin: 1rem 0 0.8rem 0;
+    margin: var(--spacing-m) 0 var(--spacing-sm) 0;
     font-weight: bold;
-    font-size: 1rem;
-    border-top: 1px solid grey;
-    padding-top: 1rem;
+    font-size: var(--font-m);
+    border-top: 1px solid var(--border);
+    padding-top: var(--spacing-m);
 }
 
 .list {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: var(--spacing-s);
 }
 
 .inlineList {
@@ -61,18 +70,14 @@
 }
 
 .level {
-    color: lightgray;
+    color: var(--text-secondary);
     text-wrap: nowrap;
 }
 
 .proficiencyName, .skillName {
-    margin-right: 0.5rem;
+    margin-right: var(--spacing-s);
 }
 
 .bold {
     font-weight: bold;
 }
-
-/* .skillSection {
-    margin: 0.5rem 0;
-} */

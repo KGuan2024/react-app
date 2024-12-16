@@ -1,31 +1,28 @@
 .container {
     display: flex;
     flex-direction: column;
-    padding: 1rem 0 0 0 ;
+    padding: var(--spacing-m) 0 0 0 ;
     height: 100%;
-    gap: 1rem;
     box-sizing: border-box;
 
-    header {
-        font-size: 1.5rem;
-        font-weight: bold;
-    }
-
-    Button {
+    .filterButton  {
         width: fit-content;
     }
 
-    header, Button {
-        margin-left: 1rem;
+    header, .filterButton {
+        margin-left: var(--spacing-m)
     }
 }
 
-
+.gridUtils {
+    padding: var(--spacing-s) 0;
+}
 
 .filtersAndGridContainer {
     position: relative;
     display: flex;
     flex-grow: 1;
+    margin-top: var(--spacing-m);
 }
 
 .filtersContainer {
@@ -34,12 +31,14 @@
     height: 100%;
     z-index: 10;
     background: white;
-    border-right: 1px solid #b1b1b1;
-    box-shadow: 10px 10px 30px -8px rgba(0,0,0,0.34);
+    border-right: 1px solid var(--bg-dark);
+    border-top: 1px solid var(--bg-dark);
+    box-sizing: border-box;
+    box-shadow: 10px 10px 30px -8px color-mix(in srgb, var(--bg-dark), transparent 70%);
 
 }
 
 .gridContainer {
-    margin: 1rem;
+    margin: 0 var(--spacing-m);
     flex-grow: 1;
 }

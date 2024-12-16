@@ -79,10 +79,16 @@ function Monsters() {
 
   return (
     <div className={styles.container}>
-      <header>Monsters</header>
-      <Button variant="contained" onClick={() => toggleFilters()}>
-        Filters
-      </Button>
+      <header className="pageHeader">Monsters</header>
+      <section className="gridUtils">
+        <Button
+          variant="contained"
+          className={styles.filterButton}
+          onClick={() => toggleFilters()}
+        >
+          Filters
+        </Button>
+      </section>
 
       <div className={styles.filtersAndGridContainer}>
         {showFilters && (

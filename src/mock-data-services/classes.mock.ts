@@ -2,7 +2,7 @@ import { ArmorTypes, Dice, Stats, WeaponTypes } from "../constants/consts";
 export interface ClassesGridData {
   name: string;
   description?: string;
-  hitDice: string;
+  hitDice: Dice;
   keyStats: Stats[];
   saves: Stats[];
 }

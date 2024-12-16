@@ -18,7 +18,7 @@ function NavBar() {
   const [expanded, setExpanded] = useState<boolean>(true);
   const [toggleIcon, setToggleIcon] = useState<SvgIcon>(collapseIcon);
 
-  const MOBILE_WIDTH = 350;
+  const MOBILE_WIDTH = 480;
   const [isMobile, setIsMobile] = useState(window.innerWidth <= MOBILE_WIDTH);
   const prevWidth = useRef(window.innerWidth);
 
@@ -29,6 +29,9 @@ function NavBar() {
 
   useEffect(() => {
     if (isMobile && expanded) {
+      toggleNav();
+    }
+    if (!isMobile && !expanded) {
       toggleNav();
     }
   }, [isMobile]);
@@ -69,16 +72,19 @@ function NavBar() {
   }
   return (
     <div className={styles.container}>
-      <SvgIcon
-        component={toggleIcon}
-        inheritViewBox
-        onClick={() => toggleNav()}
-      />
-
-      <div className={styles.nav}>
+      <div
+        className={`${styles.nav} ${
+          isMobile && expanded ? styles.overlay : ""
+        }`}
+      >
         {Navlink("/", homeIcon, "Home")}
         {Navlink("/classes", classesIcon, "Classes")}
         {Navlink("/monsters", monstersIcon, "Monsters")}
+        {/* <SvgIcon
+          component={toggleIcon}
+          inheritViewBox
+          onClick={() => toggleNav()}
+        /> */}
       </div>
     </div>
   );

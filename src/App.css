@@ -5,15 +5,25 @@
 
 body {
   scrollbar-width: thin;
-  scrollbar-color: rgb(46, 46, 46) white;
+  scrollbar-color: var(--bg-dark) white;
 
 }
 body .ag-root-wrapper  {
-  --ag-cell-horizontal-padding: 8px;
+  --ag-cell-horizontal-padding: var(--spacing-s);
+  --ag-header-background-color: var(--bg-dark);
+  --ag-header-foreground-color: var(--bg-light);
+  --ag-header-column-resize-handle-color: var(--border);
+  --ag-icon-font-color: var(--bg-light);
   
 }
 
 header {
   font-family: 'Morris-Roman';
   letter-spacing: 2px;
+}
+
+.pageHeader {
+  font-size: var(--font-l);
+  font-weight: bold;
+  margin: var(--spacing-s) 0 var(--spacing-m) 0;
 }

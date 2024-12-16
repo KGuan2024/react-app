@@ -4,7 +4,7 @@ import styles from "./Home.module.css";
 function Home() {
   return (
     <div className={styles.home}>
-      <h2>Welcome</h2>
+      <header className="pageHeader">Welcome</header>
 
       <div>
         <p>

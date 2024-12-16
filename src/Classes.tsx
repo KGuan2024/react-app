@@ -9,7 +9,7 @@ import {
 } from "ag-grid-community";
 import IconCellRenderer from "./ag-grid-components/cell-renderers/IconCellRenderer";
 import { getDiceIcons, getStatsIcons } from "./utils/shared-utils";
-import { Stats } from "./constants/consts";
+import { Dice, Stats } from "./constants/consts";
 import styles from "./Classes.module.css";
 import Tooltip from "@mui/material/Tooltip";
 import { getClasses } from "./mock-data-services/classes.mock";
@@ -29,7 +29,7 @@ function Classes() {
   const colDefs: ColDef[] = [
     {
       field: "name",
-      minWidth: 100,
+      minWidth: 80,
       cellRenderer: (params: ICellRendererParams) => {
         return (
           <Tooltip title="View Details">
@@ -50,6 +50,7 @@ function Classes() {
     },
     {
       field: "hitDice",
+      minWidth: 50,
       cellRenderer: IconCellRenderer,
       cellRendererParams: (params: ICellRendererParams) => {
         return getDiceParams(params);
@@ -58,6 +59,7 @@ function Classes() {
     {
       field: "keyStats",
       headerName: "Key Stat(s)",
+      minWidth: 72,
       cellRenderer: IconCellRenderer,
       cellRendererParams: (params: ICellRendererParams) => {
         return getIconParams(params);
@@ -66,6 +68,7 @@ function Classes() {
     },
     {
       field: "saves",
+      minWidth: 72,
       cellRenderer: IconCellRenderer,
       cellRendererParams: (params: ICellRendererParams) => {
         return getIconParams(params);
@@ -90,7 +93,7 @@ function Classes() {
       icons: [
         {
           icon: getDiceIcons(params?.value),
-          tooltip: params?.value,
+          tooltip: Dice[params?.value],
         },
       ],
     };
@@ -98,7 +101,7 @@ function Classes() {
 
   return (
     <div className={styles.classes}>
-      <header>Classes</header>
+      <header className="pageHeader">Classes</header>
       <div className={`${styles.gridContainer} ag-theme-quartz`}>
         <AgGridReact<any>
           gridOptions={gridOptions as any}

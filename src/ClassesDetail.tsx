@@ -58,21 +58,25 @@ function ClassesDetail() {
       <div className={styles.classData}>
         {data && (
           <>
-            <header className={styles.header}> {data.name}</header>
-            <section className={styles.imageDescriptionContainer}>
-              <img src={`/images/${data.image}`}></img>
-              <div className={styles.description}>{data.description}</div>
-            </section>
+            <header className={`${styles.header} pageHeader`}>
+              {data.name}
+            </header>
+            <div className={styles.dataSections}>
+              <section className={styles.imageDescriptionContainer}>
+                <img src={`/images/${data.image}`}></img>
+                <div className={styles.description}>{data.description}</div>
+              </section>
 
-            <section>
-              <div className={styles.sectionHeader}>Proficiencies</div>
-              {listProficiencies(data)}
-            </section>
+              <section>
+                <div className={styles.sectionHeader}>Proficiencies</div>
+                {listProficiencies(data)}
+              </section>
 
-            <section>
-              <div className={styles.sectionHeader}>Skills</div>
-              {listSkills(data)}
-            </section>
+              <section>
+                <div className={styles.sectionHeader}>Skills</div>
+                {listSkills(data)}
+              </section>
+            </div>
           </>
         )}
       </div>

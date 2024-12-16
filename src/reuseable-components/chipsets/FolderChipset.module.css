@@ -1,7 +1,13 @@
 .folderChipsetContainer {
-    display: "inline-flex";
-    align-items: "center";
-    gap: "4px";
+    display: inline-flex;
+    label > span {
+        font-size:var(--font-sm);
+    }
+    Button {
+        min-width: unset;
+        margin-left: var(--spacing-s);
+    }
+
 }
 
 .toggleButton {
@@ -9,5 +15,6 @@
 
     svg {
         pointer-events: none;
+        width: var(--spacing-m);
     }
 }
