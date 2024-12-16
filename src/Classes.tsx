@@ -1,12 +1,10 @@
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { AgGridReact } from "ag-grid-react";
 import "ag-grid-community/styles/ag-grid.css";
 import "ag-grid-community/styles/ag-theme-quartz.css";
-import { useState } from "react";
 import {
   CellClickedEvent,
   ColDef,
-  GridOptions,
   ICellRendererParams,
 } from "ag-grid-community";
 import IconCellRenderer from "./ag-grid-components/cell-renderers/IconCellRenderer";
@@ -14,21 +12,19 @@ import { getDiceIcons, getStatsIcons } from "./utils/shared-utils";
 import { Stats } from "./constants/consts";
 import styles from "./Classes.module.css";
 import Tooltip from "@mui/material/Tooltip";
-import {
-  mockClassesGridData,
-  ClassesGridData,
-} from "./mock-data-services/classes.mock";
+import { getClasses } from "./mock-data-services/classes.mock";
 import { defaultGridOptions } from "./constants/grid.const";
+import { useQuery } from "./hooks/useQuery.hook";
 
 function Classes() {
   const navigate = useNavigate();
+  const { data, loading, error } = useQuery(getClasses);
   const gridOptions = {
     ...defaultGridOptions,
     rowHeight: 100,
   };
 
-  const [rowData, setRowData] =
-    useState<ClassesGridData[]>(mockClassesGridData);
+  const rowData = data;
 
   const colDefs: ColDef[] = [
     {
@@ -49,7 +45,6 @@ function Classes() {
         );
       },
       onCellClicked: (event: CellClickedEvent) => {
-        console.log(event.data);
         navigate("/classes-detail/" + event.value);
       },
     },

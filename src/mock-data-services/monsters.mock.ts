@@ -158,9 +158,24 @@ export const mockMonstersData = [
   },
 ];
 
+export function getMonsters(
+  filters: Filter[] | undefined = undefined
+): Promise<Monster[]> {
+  const data = filters ? getFilteredMonsters(filters) : mockMonstersData;
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      if (data) {
+        resolve(data);
+      } else {
+        reject("Cannot fetch your monsties");
+      }
+    }, 500);
+  });
+}
+
 // business logic that would belong in the backend (if we had one)
 
-export function getFilteredMonsters(filters: Filter[]) {
+export function getFilteredMonsters(filters: Filter[]): Monster[] {
   // in real life this would be an api but unfortunately we have to use this instead
   let flatFilters: FlatMonsterFilters = {
     category: [],

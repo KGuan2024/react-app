@@ -315,50 +315,79 @@ export const mockClassesData: ClassDetail[] = [
     image: "paladin.jpg",
     classSkills: [
       {
-        name: "Bardic Inspiration",
-        description: "Inspire your allies via a pep talk or some sick tunes",
+        name: "Divine Sense",
+        description: "Sniff out celestials, fiends and undead nearby",
         level: 1,
       },
       {
-        name: "Jack of All Trades",
-        description: "Become slightly better at everything",
+        name: "Lay on Hands",
+        description: "Your divine mitts can heal people",
         level: 1,
       },
       {
-        name: "Song of Rest",
-        description:
-          "Allies heal more during resting thanks to your amsr background music",
-        level: 1,
-      },
-      {
-        name: "Expertise",
-        description: "You are extra good at things",
+        name: "Divine Smite",
+        description: "Smite thine enemies",
         level: 2,
       },
       {
-        name: "Font of Inspiration",
-        description: "After resting you can inspire your allies once more",
+        name: "Divine Health",
+        description: "You are vaccinated against all disease",
+        level: 3,
+      },
+      {
+        name: "Extra Attack",
+        description: "Hit you once. Hit you again",
         level: 5,
       },
       {
-        name: "Countercharm",
-        description: `"Anyway, here's wonderwall." Start a musical performance to protect your party from mind influencing effects`,
+        name: "Aura of Protection",
+        description:
+          "Allies nearby you are less likely to fail their saves thanks to your good vibes",
         level: 6,
       },
       {
-        name: "Magical Secrets",
-        description: "Gain some nifty new spells. And again at level 14 and 18",
+        name: "Aura of Courage",
+        description: "Allies near you grow a backbone and cannot be frightened",
         level: 10,
       },
       {
-        name: "Superior Inspiration",
-        description: "Restock your inspiration if you start battle without any",
-        level: 20,
+        name: "Improved Divine Smite",
+        description: "Smite thine enemies with every attack",
+        level: 11,
+      },
+      {
+        name: "Cleansing Touch",
+        description:
+          "Use your grabby mitts to end one spell on yourself or a willing creature",
+        level: 11,
       },
     ],
   },
 ];
 
-export function getClassDetails(id: string) {
-  return mockClassesData.find((classData) => classData.id === id);
+export function getClasses(): Promise<ClassesGridData[]> {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      if (mockClassesGridData) {
+        resolve(mockClassesGridData);
+      } else {
+        reject("Class not found");
+      }
+    }, 500);
+  });
+}
+
+export function getClassDetails(id: string): Promise<ClassDetail> {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      const classData = mockClassesData.find(
+        (classData) => classData.id === id
+      );
+      if (classData) {
+        resolve(classData);
+      } else {
+        reject("Class not found");
+      }
+    }, 500);
+  });
 }

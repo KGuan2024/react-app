@@ -1,17 +1,14 @@
 import { useEffect, useRef, useState } from "react";
 import FilterTree from "./reuseable-components/filters/FilterTree";
 import { useMonstersFilterStore } from "./stores/filters/monster-filters.store";
-import {
-  getFilteredMonsters,
-  mockMonstersData,
-  Monster,
-} from "./mock-data-services/monsters.mock";
+import { getMonsters, Monster } from "./mock-data-services/monsters.mock";
 import { ColDef } from "ag-grid-community";
 import { AgGridReact } from "ag-grid-react";
 import styles from "./Monsters.module.css";
 import { defaultGridOptions } from "./constants/grid.const";
 import Button from "@mui/material/Button";
 import { Size } from "./constants/consts";
+import { useQuery } from "./hooks/useQuery.hook";
 
 function Monsters() {
   const ref = useRef<HTMLDivElement>(null);
@@ -28,14 +25,17 @@ function Monsters() {
     (state) => state.updateExpandedFilters
   );
 
-  const [rowData, setRowData] = useState<Monster[]>(mockMonstersData);
+  const { data, loading, error } = useQuery(getMonsters, filters);
+
+  // const [rowData, setRowData] = useState<Monster[]>(mockMonstersData);
+  const rowData = data;
   const [showFilters, setShowFilters] = useState<boolean>(false);
 
-  useEffect(() => {
-    // on filter change, filter displayed monsters data
-    const filteredMonsters = getFilteredMonsters(filters);
-    setRowData(filteredMonsters);
-  }, [filters]);
+  // useEffect(() => {
+  //   // on filter change, filter displayed monsters data
+  //   const filteredMonsters = getFilteredMonsters(filters);
+  //   setRowData(filteredMonsters);
+  // }, [filters]);
 
   useEffect(() => {
     resetFilters();
