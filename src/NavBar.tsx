@@ -3,8 +3,6 @@ import styles from "./NavBar.module.css";
 import { ReactComponent as homeIcon } from "./assets/icons/house-solid.svg";
 import { ReactComponent as classesIcon } from "./assets/icons/users-line-solid.svg";
 import { ReactComponent as monstersIcon } from "./assets/icons/monster-skull.svg";
-import { ReactComponent as expandIcon } from "./assets/icons/circle-chevron-right-solid.svg";
-import { ReactComponent as collapseIcon } from "./assets/icons/circle-chevron-left-solid.svg";
 import { SvgIcon } from "@mui/material";
 import { useEffect, useRef, useState } from "react";
 
@@ -16,7 +14,6 @@ type SvgIcon = React.FunctionComponent<
 
 function NavBar() {
   const [expanded, setExpanded] = useState<boolean>(true);
-  const [toggleIcon, setToggleIcon] = useState<SvgIcon>(collapseIcon);
 
   const MOBILE_WIDTH = 480;
   const [isMobile, setIsMobile] = useState(window.innerWidth <= MOBILE_WIDTH);
@@ -37,15 +34,7 @@ function NavBar() {
   }, [isMobile]);
 
   function toggleNav() {
-    setToggleIcon(expanded ? expandIcon : collapseIcon);
     setExpanded(!expanded);
-  }
-
-  function resetNavState() {
-    if (!isMobile || !expanded) {
-      return;
-    }
-    toggleNav();
   }
 
   const setMobileState = () => {
@@ -60,7 +49,7 @@ function NavBar() {
 
   function Navlink(url: string, icon: SvgIcon, label: string) {
     return (
-      <Link to={url} onClick={() => resetNavState()}>
+      <Link to={url}>
         <SvgIcon
           component={icon}
           inheritViewBox
@@ -80,11 +69,6 @@ function NavBar() {
         {Navlink("/", homeIcon, "Home")}
         {Navlink("/classes", classesIcon, "Classes")}
         {Navlink("/monsters", monstersIcon, "Monsters")}
-        {/* <SvgIcon
-          component={toggleIcon}
-          inheritViewBox
-          onClick={() => toggleNav()}
-        /> */}
       </div>
     </div>
   );

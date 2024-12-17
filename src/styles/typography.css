@@ -1,0 +1,22 @@
+.bold {
+    font-weight: var(--bold);
+}
+
+.medium {
+    font-weight: var(--medium);
+}
+
+.regular {
+    font-weight: var(--regular);
+}
+
+header {
+    font-family: 'Morris-Roman';
+    letter-spacing: 2px;
+}
+  
+.pageHeader {
+font-size: var(--font-l);
+font-weight: bold;
+margin: var(--spacing-s) 0 var(--spacing-m) 0;
+}

@@ -13,6 +13,8 @@ import ClassesDetail from "./ClassesDetail";
 import Monsters from "./Monsters";
 import NavBar from "./NavBar";
 import styles from "./App.module.css";
+import { ThemeProvider } from "@mui/material";
+import { MuiTheme } from "./styles/muiTheme";
 
 function AppWrapper() {
   return (
@@ -56,7 +58,9 @@ function App() {
 
   return (
     <React.StrictMode>
-      <RouterProvider router={router} />
+      <ThemeProvider theme={MuiTheme}>
+        <RouterProvider router={router} />
+      </ThemeProvider>
     </React.StrictMode>
   );
 }

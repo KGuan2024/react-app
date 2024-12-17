@@ -1,3 +1,5 @@
+@import "styles/typography.css";
+
 @font-face {
   font-family: 'Morris-Roman';
   src: local('Morris-Roman'), url(./assets/fonts/MorrisRoman-Black.ttf) format('truetype');
@@ -14,16 +16,4 @@ body .ag-root-wrapper  {
   --ag-header-foreground-color: var(--bg-light);
   --ag-header-column-resize-handle-color: var(--border);
   --ag-icon-font-color: var(--bg-light);
-  
-}
-
-header {
-  font-family: 'Morris-Roman';
-  letter-spacing: 2px;
-}
-
-.pageHeader {
-  font-size: var(--font-l);
-  font-weight: bold;
-  margin: var(--spacing-s) 0 var(--spacing-m) 0;
 }
