@@ -7,7 +7,7 @@
 
 body {
   scrollbar-width: thin;
-  scrollbar-color: var(--bg-dark) white;
+  scrollbar-color:  var(--brand-secondary-light) var(--bg-dark);
 }
 
 body .ag-root-wrapper  {
