@@ -5,6 +5,7 @@ import { ReactComponent as classesIcon } from "./assets/icons/users-line-solid.s
 import { ReactComponent as monstersIcon } from "./assets/icons/monster-skull.svg";
 import { SvgIcon } from "@mui/material";
 import { useEffect, useRef, useState } from "react";
+import { useScreenSizeDetector } from "./hooks/useScreensizeDetector.hook";
 
 type SvgIcon = React.FunctionComponent<
   React.SVGProps<SVGSVGElement> & {
@@ -14,15 +15,7 @@ type SvgIcon = React.FunctionComponent<
 
 function NavBar() {
   const [expanded, setExpanded] = useState<boolean>(true);
-
-  const MOBILE_WIDTH = 480;
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= MOBILE_WIDTH);
-  const prevWidth = useRef(window.innerWidth);
-
-  useEffect(() => {
-    window.addEventListener("resize", setMobileState);
-    return () => window.removeEventListener("resize", setMobileState);
-  }, []);
+  const { isMobile } = useScreenSizeDetector();
 
   useEffect(() => {
     if (isMobile && expanded) {
@@ -37,16 +30,6 @@ function NavBar() {
     setExpanded(!expanded);
   }
 
-  const setMobileState = () => {
-    const currWidth = window.innerWidth;
-    if (currWidth <= MOBILE_WIDTH && prevWidth.current > MOBILE_WIDTH) {
-      setIsMobile(true);
-    } else if (currWidth > MOBILE_WIDTH && prevWidth.current <= MOBILE_WIDTH) {
-      setIsMobile(false);
-    }
-    prevWidth.current = currWidth;
-  };
-
   function Navlink(url: string, icon: SvgIcon, label: string) {
     return (
       <Link to={url}>
@@ -59,6 +42,7 @@ function NavBar() {
       </Link>
     );
   }
+
   return (
     <div className={styles.container}>
       <div
