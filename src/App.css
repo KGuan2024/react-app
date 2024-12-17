@@ -8,8 +8,8 @@
 body {
   scrollbar-width: thin;
   scrollbar-color: var(--bg-dark) white;
-
 }
+
 body .ag-root-wrapper  {
   --ag-cell-horizontal-padding: var(--spacing-s);
   --ag-header-background-color: var(--bg-dark);
