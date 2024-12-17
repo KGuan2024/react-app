@@ -1,17 +1,55 @@
 .filterTreeContainer {
-    padding: var(--spacing-sm);
     max-height: 100%;
     height: 100%;
     box-sizing: border-box;
-    overflow-y: auto;
     color: var(--text-dark);
-
-    >.filterSection >.childFilterSection {
-        margin-left: var(--spacing-s);
-    }
+    display: flex;
+    flex-direction: column;
 
     Button {
         color: var(--text-secondary);
+    }
+}
+
+.filterTreeHeader {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    font-weight: var(--medium);
+    padding: var(--spacing-sm);
+    background-color: var(--bg-dark);
+    height: 40px;
+    box-sizing: border-box;
+    color: var(--text-light);
+    border-bottom: 1px solid var(--border);
+
+
+    & > Button {
+        color: inherit;
+        min-width: unset;
+        border-radius: 100%;
+        height: var(--icon-l);
+        width: var(--icon-l);
+
+        &:hover {
+            background-color: var(--brand-secondary);
+        }
+
+        > svg {
+            cursor: pointer;
+            height:var(--icon-s);
+            width: var(--icon-s);
+        }
+    }
+
+}
+
+.filtersContainer {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding: var(--spacing-sm);
+    >.filterSection >.childFilterSection {
+        margin-left: var(--spacing-s);
     }
 }
 

@@ -11,8 +11,6 @@ import { Size } from "./constants/consts";
 import { useQuery } from "./hooks/useQuery.hook";
 
 function Monsters() {
-  const ref = useRef<HTMLDivElement>(null);
-
   const gridOptions = {
     ...defaultGridOptions,
   };
@@ -32,24 +30,6 @@ function Monsters() {
   useEffect(() => {
     resetFilters();
   }, []);
-
-  useEffect(() => {
-    const handleClick = (event: MouseEvent) => {
-      if (ref.current && !ref.current.contains(event.target as HTMLElement)) {
-        setShowFilters(false);
-      }
-    };
-
-    if (showFilters) {
-      setTimeout(() => {
-        document.addEventListener("click", handleClick);
-      });
-
-      return () => {
-        document.removeEventListener("click", handleClick);
-      };
-    }
-  }, [showFilters]);
 
   function toggleFilters() {
     setShowFilters(!showFilters);
@@ -91,18 +71,19 @@ function Monsters() {
       </section>
 
       <div className={styles.filtersAndGridContainer}>
-        {showFilters && (
-          <div className={styles.filtersContainer} ref={ref}>
-            {FilterTree({
-              filters: filters,
-              selectFilterHandler: updateSelectedFilters,
-              toggleHandler: updateExpandedFilters,
-              clickOutsideHandler: () => setShowFilters(false),
-            })}
-          </div>
-        )}
+        <div className={styles.filtersContainer}>
+          {FilterTree({
+            filters: filters,
+            selectFilterHandler: updateSelectedFilters,
+            toggleHandler: updateExpandedFilters,
+            closeHandler: () => setShowFilters(false),
+            onClickOutside: () => setShowFilters(false),
+            show: showFilters,
+          })}
+        </div>
 
         <div className={`${styles.gridContainer} ag-theme-quartz`}>
+          {showFilters && <div className={styles.overlay}></div>}
           <AgGridReact<Monster>
             rowData={rowData}
             columnDefs={colDefs as any[]}

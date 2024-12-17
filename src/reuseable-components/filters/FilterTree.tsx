@@ -1,6 +1,10 @@
 import FolderChipset from "../chipsets/FolderChipset";
 import { hasChildren } from "./filter-utils";
 import styles from "./FilterTree.module.css";
+import { ReactComponent as closeIcon } from "../../assets/icons/xmark-solid.svg";
+import { Button, SvgIcon } from "@mui/material";
+import { useRef } from "react";
+import { useClickOutside } from "../../hooks/useClickOutside.hook";
 export interface Filter {
   key: string;
   type: string;
@@ -17,17 +21,24 @@ export enum SelectedState {
 
 interface FolderChipsetProps {
   filters: Filter[];
-  showFilters?: boolean;
   selectFilterHandler: Function;
   toggleHandler: Function;
-  clickOutsideHandler: Function;
+  closeHandler: Function;
+  onClickOutside: Function;
+  show?: boolean;
 }
 
 function FilterTree({
   filters,
   selectFilterHandler,
   toggleHandler,
+  closeHandler,
+  onClickOutside,
+  show,
 }: FolderChipsetProps) {
+  const ref = useRef<HTMLDivElement>(null);
+  useClickOutside(ref, () => onClickOutside());
+
   function RenderFiltersList(
     filters: Filter[],
     parentIndexPath: number[] = []
@@ -67,9 +78,19 @@ function FilterTree({
   }
 
   return (
-    <div className={styles.filterTreeContainer}>
-      {RenderFiltersList(filters, [])}
-    </div>
+    show && (
+      <div className={styles.filterTreeContainer} ref={ref}>
+        <div className={styles.filterTreeHeader}>
+          <div>Filters</div>
+          <Button onClick={() => closeHandler()}>
+            <SvgIcon component={closeIcon} inheritViewBox />
+          </Button>
+        </div>
+        <div className={styles.filtersContainer}>
+          {RenderFiltersList(filters, [])}
+        </div>
+      </div>
+    )
   );
 }
 
