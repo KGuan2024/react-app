@@ -11,4 +11,6 @@
     --text-secondary: #414141;
     --text-secondary-light: #6e6e6e;
     --border: #6e6e6e;
+    --hover-overlay-light: color-mix(in srgb, var(--bg-light), transparent 70%);
+    --hover-overlay-dark: color-mix(in srgb, var(--bg-dark), transparent 70%);
 }

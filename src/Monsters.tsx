@@ -24,11 +24,11 @@ function Monsters() {
   );
 
   const { data, loading, error } = useQuery(getMonsters, filters);
-  const rowData = data;
   const [showFilters, setShowFilters] = useState<boolean>(false);
 
   useEffect(() => {
     resetFilters();
+    setShowFilters(false);
   }, []);
 
   function toggleFilters() {
@@ -85,9 +85,9 @@ function Monsters() {
         <div className={`${styles.gridContainer} ag-theme-quartz`}>
           {showFilters && <div className={styles.overlay}></div>}
           <AgGridReact<Monster>
-            rowData={rowData}
-            columnDefs={colDefs as any[]}
-            gridOptions={gridOptions as any}
+            rowData={data}
+            columnDefs={colDefs}
+            gridOptions={gridOptions}
           />
         </div>
       </div>

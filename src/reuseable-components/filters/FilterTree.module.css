@@ -5,10 +5,6 @@
     color: var(--text-dark);
     display: flex;
     flex-direction: column;
-
-    Button {
-        color: var(--text-secondary);
-    }
 }
 
 .filterTreeHeader {
@@ -22,26 +18,6 @@
     box-sizing: border-box;
     color: var(--text-light);
     border-bottom: 1px solid var(--border);
-
-
-    & > Button {
-        color: inherit;
-        min-width: unset;
-        border-radius: 100%;
-        height: var(--icon-l);
-        width: var(--icon-l);
-
-        &:hover {
-            background-color: var(--brand-secondary);
-        }
-
-        > svg {
-            cursor: pointer;
-            height:var(--icon-s);
-            width: var(--icon-s);
-        }
-    }
-
 }
 
 .filtersContainer {
@@ -50,6 +26,10 @@
     padding: var(--spacing-sm);
     >.filterSection >.childFilterSection {
         margin-left: var(--spacing-s);
+    }
+
+    Button {
+        color: var(--text-secondary);
     }
 }
 

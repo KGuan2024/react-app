@@ -5,6 +5,7 @@ import { ReactComponent as closeIcon } from "../../assets/icons/xmark-solid.svg"
 import { Button, SvgIcon } from "@mui/material";
 import { useRef } from "react";
 import { useClickOutside } from "../../hooks/useClickOutside.hook";
+import { RoundHighlightIconButtonDark } from "../mui-components/ButtonVariants";
 export interface Filter {
   key: string;
   type: string;
@@ -82,9 +83,10 @@ function FilterTree({
       <div className={styles.filterTreeContainer} ref={ref}>
         <div className={styles.filterTreeHeader}>
           <div>Filters</div>
-          <Button onClick={() => closeHandler()}>
+          <RoundHighlightIconButtonDark onClick={() => closeHandler()}>
+            {" "}
             <SvgIcon component={closeIcon} inheritViewBox />
-          </Button>
+          </RoundHighlightIconButtonDark>
         </div>
         <div className={styles.filtersContainer}>
           {RenderFiltersList(filters, [])}

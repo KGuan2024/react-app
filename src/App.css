@@ -11,7 +11,7 @@ body {
 }
 
 body .ag-root-wrapper  {
-  --ag-cell-horizontal-padding: var(--spacing-s);
+  --ag-cell-horizontal-padding: var(--spacing-sm);
   --ag-header-background-color: var(--bg-dark);
   --ag-header-foreground-color: var(--bg-light);
   --ag-header-column-resize-handle-color: var(--border);
