@@ -26,7 +26,6 @@ export function updateSelectedFilters(
   if (hasChildren(filterToUpdate)) {
     updateChildren(filterToUpdate, updatedSelectedState as SelectedState);
   }
-
   updateParents(parentIndexPath, filters);
 }
 
