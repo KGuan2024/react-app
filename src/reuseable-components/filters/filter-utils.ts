@@ -79,7 +79,7 @@ export function updateParents(indexPath: number[], data: Filter[]) {
     if (node.selectedState !== selectedState) {
       node.selectedState = selectedState;
     }
-    pathCopy.pop(); // remove the last item from the array
+    pathCopy.pop();
   }
 }
 

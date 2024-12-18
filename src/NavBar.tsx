@@ -41,16 +41,10 @@ function NavBar() {
   }
 
   return (
-    <div className={styles.container}>
-      <div
-        className={`${styles.nav} ${
-          isMobile && expanded ? styles.overlay : ""
-        }`}
-      >
-        {Navlink("/", homeIcon, "Home")}
-        {Navlink("/classes", classesIcon, "Classes")}
-        {Navlink("/monsters", monstersIcon, "Monsters")}
-      </div>
+    <div className={styles.nav}>
+      {Navlink("/", homeIcon, "Home")}
+      {Navlink("/classes", classesIcon, "Classes")}
+      {Navlink("/monsters", monstersIcon, "Monsters")}
     </div>
   );
 }

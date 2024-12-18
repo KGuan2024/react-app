@@ -1,7 +1,7 @@
 .container {
     display: flex;
     flex-direction: column;
-    padding: var(--spacing-m) 0 0 0 ;
+    padding: var(--spacing-m) 0;
     height: 100%;
     box-sizing: border-box;
 
@@ -31,10 +31,10 @@
     height: 100%;
     z-index: 10;
     background: white;
-    border-right: 1px solid var(--border);
-    border-top: 1px solid var(--border);
+    border-right: var(--border-thin) solid var(--border);
+    border-top: var(--border-thin) solid var(--border);
     box-sizing: border-box;
-    box-shadow: 10px 10px 30px -8px color-mix(in srgb, var(--bg-dark), transparent 70%);
+    box-shadow: 10px 10px 30px -8px var(--shadow);
 
 }
 
@@ -47,6 +47,6 @@
     width: calc(100% - (2 * var(--spacing-m))) ;
     height: 100%;
     position: absolute;
-    background: rgba(0, 0, 0, 0.2);
+    background: var(--overlay-bg);
     z-index: 2;
 }

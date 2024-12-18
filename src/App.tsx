@@ -1,12 +1,7 @@
 import React from "react";
 import "./App.css";
 import "./styles/variables.css";
-import {
-  createBrowserRouter,
-  Link,
-  Outlet,
-  RouterProvider,
-} from "react-router-dom";
+import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 import Classes from "./Classes";
 import Home from "./Home";
 import ClassesDetail from "./ClassesDetail";

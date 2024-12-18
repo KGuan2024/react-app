@@ -1,16 +1,12 @@
-.container {
-    width: 100%;
-    position: relative;
-}
-
-
 .nav {
+    width: 100%;
     background-color: var(--brand-secondary);
     display: flex;
     gap: var((--spacing-m));
     height: fit-content;
     padding: 0 var(--spacing-s);
     box-sizing: border-box;
+    
     a {
         color: var(--text-light);
         display: inline-flex;
@@ -24,20 +20,4 @@
             background-color: var(--brand-secondary-light);
         }
     }
-
-    > svg {
-        position:absolute;
-        width: 24px;
-        right: -8px;
-        top: 12px;
-        color:var(--brand-secondary-light);
-        border: 2px solid var(--bg-dark);
-        border-radius: 100%;
-        cursor: pointer;
-    }
-}
-
-.overlay {
-    position: absolute;
-    z-index: 1000;
 }

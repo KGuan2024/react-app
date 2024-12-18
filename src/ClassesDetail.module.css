@@ -15,7 +15,7 @@
         max-height: 200px;
         object-fit: cover;
         object-position: top;
-        border: 2px solid var(--bg-light);
+        border: var(--border-medium) solid var(--bg-light);
         border-radius: var(--spacing-m);
     }
 }
@@ -41,7 +41,7 @@
     font-weight: bold;
     margin-bottom: var(--spacing-m);
     padding-bottom: var(--spacing-m);
-    border-bottom: 1px solid var(--border);
+    border-bottom: var(--border-thin) solid var(--border);
 }
 
 .description {
@@ -54,7 +54,7 @@
     margin: var(--spacing-m) 0 var(--spacing-sm) 0;
     font-weight: bold;
     font-size: var(--font-m);
-    border-top: 1px solid var(--border);
+    border-top: var(--border-thin) solid var(--border);
     padding-top: var(--spacing-m);
 }
 

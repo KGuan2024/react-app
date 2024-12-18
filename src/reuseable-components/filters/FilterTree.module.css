@@ -47,7 +47,7 @@
 
 .childFilterSection {
     margin-left: 21px;
-    border-left: 1px solid var(--border);
+    border-left: var(--border-thin) solid var(--border);
     position: relative;
     
     &:last-of-type{
