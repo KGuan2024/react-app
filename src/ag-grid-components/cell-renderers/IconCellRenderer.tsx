@@ -20,7 +20,9 @@ export default (params: IconRendererParams) => {
     <>
       <div className={styles.iconContainer}>
         {icons}
-        <span>{params?.text}</span>
+        {params?.text && (
+          <span>{params.text}</span>
+        )}
       </div>
     </>
   );
