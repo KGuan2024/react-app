@@ -13,6 +13,10 @@ scaling in mind.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Running the app
+
+To load up the app, run 'npm i' in the root directory followed by 'npm run start'
+
 ## Available Scripts
 
 In the project directory, you can run:
