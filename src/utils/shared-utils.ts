@@ -17,22 +17,16 @@ export function getStatsIcons(stat: Stats) {
   switch (stat) {
     case Stats.Strength:
       return strengthIcon;
-      break;
     case Stats.Con:
       return conIcon;
-      break;
     case Stats.Dex:
       return dexIcon;
-      break;
     case Stats.Int:
       return intIcon;
-      break;
     case Stats.Wisdom:
       return wisdomIcon;
-      break;
     case Stats.Charisma:
       return charismaIcon;
-      break;
     default:
   }
 }
@@ -41,22 +35,16 @@ export function getDiceIcons(dice: Dice) {
   switch (dice) {
     case Dice.D4:
       return d4Icon;
-      break;
     case Dice.D6:
       return d6Icon;
-      break;
     case Dice.D8:
       return d8Icon;
-      break;
     case Dice.D10:
       return d10Icon;
-      break;
     case Dice.D12:
       return d12Icon;
-      break;
     case Dice.D20:
       return d20Icon;
-      break;
     default:
   }
 }
