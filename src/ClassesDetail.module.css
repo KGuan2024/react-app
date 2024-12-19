@@ -2,6 +2,8 @@
     padding: var(--spacing-xl);
     background-color:var(--bg-dark-secondary);
     color: var(--text-light);
+    height: 100%;
+    box-sizing: border-box;
 }
 
 .classData {
