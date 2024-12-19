@@ -2,7 +2,7 @@ import { RefObject, useEffect } from "react";
 
 export const useClickOutside = (
   ref: RefObject<HTMLElement | undefined>,
-  callback: () => void
+  callback: () => void,
 ) => {
   const handleClick = (event: MouseEvent) => {
     if (ref.current && !ref.current.contains(event.target as HTMLElement)) {
@@ -11,9 +11,7 @@ export const useClickOutside = (
   };
 
   useEffect(() => {
-    setTimeout(() => {
-      document.addEventListener("click", handleClick);
-    });
+    document.addEventListener("click", handleClick);
 
     return () => {
       document.removeEventListener("click", handleClick);

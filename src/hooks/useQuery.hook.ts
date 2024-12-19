@@ -19,6 +19,6 @@ export function useQuery<T>(
         setLoading(false);
         setData(undefined);
       });
-  }, [variables]);
+  }, [variables, queryFn]);
   return { loading, error, data };
 }

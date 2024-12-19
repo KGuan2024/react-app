@@ -29,7 +29,7 @@ function Monsters() {
   useEffect(() => {
     resetFilters();
     setShowFilters(false);
-  }, []);
+  }, [resetFilters]);
 
   function toggleFilters() {
     setShowFilters(!showFilters);
@@ -64,7 +64,7 @@ function Monsters() {
         <Button
           variant="contained"
           className={styles.filterButton}
-          onClick={() => toggleFilters()}
+          onClick={(e) => { e.stopPropagation(); toggleFilters();}}
         >
           Filters
         </Button>

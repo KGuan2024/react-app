@@ -63,7 +63,7 @@ function ClassesDetail() {
             </header>
             <div className={styles.dataSections}>
               <section className={styles.imageDescriptionContainer}>
-                <img src={`/images/${data.image}`}></img>
+                <img src={`${process.env.PUBLIC_URL}/images/${data.image}`}></img>
                 <div className={styles.description}>{data.description}</div>
               </section>
 

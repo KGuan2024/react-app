@@ -2,7 +2,7 @@ import FolderChipset from "../chipsets/FolderChipset";
 import { hasChildren } from "./filter-utils";
 import styles from "./FilterTree.module.css";
 import { ReactComponent as closeIcon } from "../../assets/icons/xmark-solid.svg";
-import { Button, SvgIcon } from "@mui/material";
+import { SvgIcon } from "@mui/material";
 import { useRef } from "react";
 import { useClickOutside } from "../../hooks/useClickOutside.hook";
 import { RoundHighlightIconButtonDark } from "../mui-components/ButtonVariants";

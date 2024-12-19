@@ -4,7 +4,7 @@ import { ReactComponent as homeIcon } from "./assets/icons/house-solid.svg";
 import { ReactComponent as classesIcon } from "./assets/icons/users-line-solid.svg";
 import { ReactComponent as monstersIcon } from "./assets/icons/monster-skull.svg";
 import { SvgIcon } from "@mui/material";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useScreenSizeDetector } from "./hooks/useScreensizeDetector.hook";
 
 type SvgIcon = React.FunctionComponent<
@@ -16,16 +16,16 @@ type SvgIcon = React.FunctionComponent<
 function NavBar() {
   const [expanded, setExpanded] = useState<boolean>(true);
   const { isMobile } = useScreenSizeDetector();
+  const toggleNav = useCallback(() => {
+    setExpanded(!expanded);
+  }, [expanded]);
 
   useEffect(() => {
     if ((isMobile && expanded) || (!isMobile && !expanded)) {
       toggleNav();
     }
-  }, [isMobile]);
+  }, [isMobile, toggleNav, expanded]);
 
-  function toggleNav() {
-    setExpanded(!expanded);
-  }
 
   function Navlink(url: string, icon: SvgIcon, label: string) {
     return (
