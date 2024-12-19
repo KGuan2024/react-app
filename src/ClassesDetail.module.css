@@ -11,7 +11,7 @@
     font-size: var(--font-sm);
 
     img {
-        flex-basis: 40%;
+        flex: 1;
         max-width: 240px;
         min-width: 150px;
         max-height: 200px;
@@ -48,8 +48,8 @@
 
 .description {
     font-size: var(--font-sm);
-    flex-grow: 1;
-    flex-basis: 55%;
+    flex: 1;
+    min-width: 130px;
 }
 
 .sectionHeader {
